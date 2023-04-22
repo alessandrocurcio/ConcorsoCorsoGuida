@@ -1,0 +1,37 @@
+<header>
+
+  <div style="text-align:center">
+    <img src="../../assets/PhilipMorris-CBN_SafetyCare.png" style="height:110px" />
+    <img src="../../assets/Scuderia_de_Adamich - rev 06122017 - ALTA RISOLUZIONE.png" style="width:100px" />
+  </div>
+  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <div class="container">
+      <a class="navbar-brand" [routerLink]="['/']">CONCORSO CORSO GUIDA</a>
+      <button class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target=".navbar-collapse"
+              aria-label="Toggle navigation"
+              [attr.aria-expanded]="isExpanded"
+              (click)="toggle()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
+           [ngClass]="{ show: isExpanded }" *ngIf="$any(currentUser)?.id>0">
+        <ul class="navbar-nav flex-grow">
+          <li class="nav-item"
+              [routerLinkActive]="['link-active']"
+              [routerLinkActiveOptions]="{ exact: true }">
+            <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="currentUser?.role === 1">
+            <a class="nav-link text-dark" [routerLink]="['/registration']">Registrations</a>
+          </li>
+          <li class="nav-item" style="cursor:pointer;" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" (click)="logout()">Log out</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

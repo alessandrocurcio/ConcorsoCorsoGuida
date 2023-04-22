@@ -1,0 +1,50 @@
+<app-nav-menu></app-nav-menu>
+<div class="container">
+
+  <div *ngIf="!started && !ended">
+    <video width="100%" (ended)="videoEnded($event)" id="video" #video (click)="pauseVideo()">
+      <source src="../assets/Video Finale - presentazioni alla fine - yt hd.mp4" type="video/mp4">
+      Your browser does not support HTML video.
+    </video>
+    <!--<div id="controls">
+      <button class="btn btn-outline-primary" (click)="playVideo()">Play</button>
+      <button class="btn btn-outline-primary" (click)="pauseVideo()">Pause</button>
+    </div>-->
+
+    <img src="../../assets/play.png" class="play-icon" (click)="playVideo()" *ngIf="!playing" />
+  </div>
+
+  <div *ngIf="ended" style="text-align:center;">
+    <button (click)="start()" class="btn btn-primary">Clicca qui per iniziare la registrazione</button>
+  </div>
+
+  <div *ngIf="started && !finished">
+
+    <label for="name">Nome:</label>
+    <input type="text" name="name" class="form-control" [(ngModel)]="name" />
+    <br />
+    <label for="surname">Cognome:</label>
+    <input type="text" name="surname" class="form-control" [(ngModel)]="surname" />
+    <br />
+    <label for="phone">Telefono:</label>
+    <input type="text" name="phone" class="form-control" [(ngModel)]="phone" />
+    <br />
+    <label for="email">Email:</label>
+    <input type="text" name="email" class="form-control" [(ngModel)]="email" />
+    <br />
+    <span>I dati personali sono trattati da Philip Morris Manufacturing & Technology S.p.A., in qualità di titolare del trattamento, al fine di gestire la Sua partecipazione alla presente iniziativa. Cliccando su “Conferma”, dichiaro di aver letto l’informativa privacy applicabile fra le seguenti:</span>
+    <ol type="a">
+      <li><a href="https://www.pmiprivacy.com/italy/it/business-partner/" target="_blank">Informativa privacy per i partner aziendali e altri stakeholder di PMI</a></li>
+      <li><a href="../../assets/Informativa sulla privacy per i dipendenti PMI - Globale.pdf" target="_blank">Informativa privacy per i dipendenti di PMI</a></li>
+    </ol>
+
+    <button (click)="save()" class="btn btn-primary">Conferma</button>
+
+  </div>
+
+  <div *ngIf="finished">
+    <h4>Registrazione avvenuta con successo</h4>
+    <button (click)="startAgain()" class="btn btn-primary">Inizia una nuova registrazione</button>
+  </div>
+
+</div>

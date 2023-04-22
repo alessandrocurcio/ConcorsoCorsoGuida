@@ -1,0 +1,31 @@
+<app-nav-menu></app-nav-menu>
+<div class="container">
+  <h1 id="tableLabel">Registrazioni</h1>
+
+  <p *ngIf="!registrations"><em>Loading...</em></p>
+
+  <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="registrations">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Email</th>
+        <th>Phone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let registration of registrations">
+        <td>{{ registration.id }}</td>
+        <td>{{ registration.name }}</td>
+        <td>{{ registration.surname }}</td>
+        <td>{{ registration.email }}</td>
+        <td>{{ registration.phone }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <label for="NRow">Number of row</label>
+  <input name="NRow" type="text" class="form-control" [(ngModel)]="nRow" />
+  <button class="btn btn-primary" (click)="exportRnd()">Export Random</button>
+  <button class="btn btn-primary" (click)="export()">Export All</button>
+</div>
